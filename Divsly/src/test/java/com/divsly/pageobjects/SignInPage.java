@@ -71,5 +71,10 @@ public class SignInPage {
 	public void clickSigninWithGoogle() {
 		buttonSignInWithGoogle.click();
 	}
+	
+	public boolean textAccountNotFoundIsVisible()
+	{
+		return textAccountNotFound.isDisplayed();
+	}
 
 }

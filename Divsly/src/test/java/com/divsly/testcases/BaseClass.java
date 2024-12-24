@@ -3,7 +3,7 @@ package com.divsly.testcases;
 import java.time.Duration;
 
 import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.core.Logger;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -35,13 +35,14 @@ public class BaseClass {
 	@BeforeClass
 	public void setup() {
 
-		switch (url.toLowerCase()) {
+		switch (browser.toLowerCase()) {
 		case "chrome": {
 			WebDriverManager.chromedriver().setup();
 			if (headless) {
 				ChromeOptions options = new ChromeOptions();
-				options.setHeadless(true);
+				options.addArguments("--headless=new");
 				driver = new ChromeDriver(options);
+				break;
 			} else {
 				driver = new ChromeDriver();
 			}
@@ -51,8 +52,9 @@ public class BaseClass {
 			WebDriverManager.edgedriver().setup();
 			if (headless) {
 				EdgeOptions options = new EdgeOptions();
-				options.setHeadless(true);
+				options.addArguments("--headless=new");
 				driver = new EdgeDriver(options);
+				break;
 			} else
 				driver = new EdgeDriver();
 			break;
@@ -62,8 +64,9 @@ public class BaseClass {
 			WebDriverManager.firefoxdriver().setup();
 			if (headless) {
 				FirefoxOptions options = new FirefoxOptions();
-				options.setHeadless(true);
+				options.addArguments("--headless=new");
 				driver = new FirefoxDriver(options);
+				break;
 			} else
 				driver = new FirefoxDriver();
 			break;
@@ -74,7 +77,7 @@ public class BaseClass {
 			driver = new ChromeDriver();
 			break;
 		}
-		logger = (Logger) LogManager.getLogger("DivslyTesting");
+		logger = LogManager.getLogger("DivslyTesting");
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(Duration.ofMillis(implicitWaitTime));
 

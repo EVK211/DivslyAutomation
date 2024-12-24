@@ -65,27 +65,27 @@ public class ReadConfig {
 	public long getShortWait() {
 		String shortWaitinSeconds = properties.getProperty("shortWait");
 		if (shortWaitinSeconds != null && shortWaitinSeconds.chars().allMatch(Character::isDigit))
-			return Integer.parseInt(shortWaitinSeconds) * 1000;
+			return Integer.parseInt(shortWaitinSeconds);
 		else
-			return 2000;
+			return 2;
 
 	}
 
 	public long getMedWait() {
 		String medWaitinSeconds = properties.getProperty("medWait");
 		if (medWaitinSeconds != null && medWaitinSeconds.chars().allMatch(Character::isDigit))
-			return Integer.parseInt(medWaitinSeconds) * 1000;
+			return Integer.parseInt(medWaitinSeconds);
 		else
-			return 5000;
+			return 5;
 
 	}
 
 	public long getLongWait() {
 		String longWaitinSeconds = properties.getProperty("longWait");
 		if (longWaitinSeconds != null && longWaitinSeconds.chars().allMatch(Character::isDigit))
-			return Integer.parseInt(longWaitinSeconds) * 1000;
+			return Integer.parseInt(longWaitinSeconds);
 		else
-			return 10000;
+			return 20;
 
 	}
 
