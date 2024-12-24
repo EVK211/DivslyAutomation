@@ -38,19 +38,27 @@ public class SignInPage {
 	@FindBy(xpath = "//span[text()='Account not found.']")
 	WebElement textAccountNotFound;
 
-	public void enterEmailAddress(String email) {
+	public void userLogin(String email, String password) {
 		inputUserEmail.clear();
 		inputUserEmail.sendKeys(email);
-	}
-
-	public void enterPasswor(String password) {
 		inputUserPassword.clear();
 		inputUserPassword.sendKeys(password);
-	}
-
-	public void clickSignin() {
 		buttonContinue.click();
 	}
+
+//	public void enterEmailAddress(String email) {
+//		inputUserEmail.clear();
+//		inputUserEmail.sendKeys(email);
+//	}
+//
+//	public void enterPasswor(String password) {
+//		inputUserPassword.clear();
+//		inputUserPassword.sendKeys(password);
+//	}
+//
+//	public void clickSignin() {
+//		buttonContinue.click();
+//	}
 
 	public void clickSignup() {
 		linkSignUp.click();
@@ -62,6 +70,11 @@ public class SignInPage {
 
 	public void clickSigninWithGoogle() {
 		buttonSignInWithGoogle.click();
+	}
+	
+	public boolean textAccountNotFoundIsVisible()
+	{
+		return textAccountNotFound.isDisplayed();
 	}
 
 }
