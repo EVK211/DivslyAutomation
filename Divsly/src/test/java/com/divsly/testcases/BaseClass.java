@@ -32,9 +32,42 @@ public class BaseClass {
 	public static WebDriver driver;
 	public static Logger logger;
 
+	public static void loggingMethod(String loggerType, String message) {
+		switch (loggerType) {
+		case "debug": {
+			logger.debug(message);
+			break;
+		}
+		case "error": {
+			logger.error(message);
+			break;
+		}
+		case "info": {
+			logger.info(message);
+			break;
+		}
+		case "warn": {
+			logger.warn(message);
+			break;
+		}
+		case "trace": {
+			logger.trace(message);
+			break;
+		}
+		case "fatal": {
+			logger.fatal(message);
+			break;
+		}
+		case "message": {
+			logger.debug(message);
+			break;
+		}
+		}
+	}
+
 	@BeforeClass
 	public void setup() {
-
+		logger = LogManager.getLogger("Divsly");
 		switch (browser.toLowerCase()) {
 		case "chrome": {
 			WebDriverManager.chromedriver().setup();
@@ -42,9 +75,11 @@ public class BaseClass {
 				ChromeOptions options = new ChromeOptions();
 				options.addArguments("--headless=new");
 				driver = new ChromeDriver(options);
+				loggingMethod("info", "Initialised chrome browser in headless mode");
 				break;
 			} else {
 				driver = new ChromeDriver();
+				loggingMethod("info", "Initialised chrome browser");
 			}
 			break;
 		}
@@ -54,9 +89,11 @@ public class BaseClass {
 				EdgeOptions options = new EdgeOptions();
 				options.addArguments("--headless=new");
 				driver = new EdgeDriver(options);
+				loggingMethod("info", "Initialised edge browser in headless mode");
 				break;
 			} else
 				driver = new EdgeDriver();
+			loggingMethod("info", "Initialised edge browser");
 			break;
 
 		}
@@ -66,18 +103,21 @@ public class BaseClass {
 				FirefoxOptions options = new FirefoxOptions();
 				options.addArguments("--headless=new");
 				driver = new FirefoxDriver(options);
+				loggingMethod("info", "Initialised firefox browser in headless mode");
 				break;
 			} else
 				driver = new FirefoxDriver();
+			loggingMethod("info", "Initialised firefox browser");
 			break;
 		}
 
 		default:
 			WebDriverManager.chromedriver().setup();
 			driver = new ChromeDriver();
+			loggingMethod("info", "Initialised chrome browser using default config");
 			break;
 		}
-		logger = LogManager.getLogger("Divsly");
+
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(Duration.ofMillis(implicitWaitTime));
 
