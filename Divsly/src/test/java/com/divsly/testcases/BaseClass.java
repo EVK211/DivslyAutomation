@@ -77,7 +77,7 @@ public class BaseClass {
 			driver = new ChromeDriver();
 			break;
 		}
-		logger = LogManager.getLogger("DivslyTesting");
+		logger = LogManager.getLogger("Divsly");
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(Duration.ofMillis(implicitWaitTime));
 
