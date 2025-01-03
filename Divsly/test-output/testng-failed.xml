@@ -5,9 +5,11 @@
     <classes>
       <class name="com.divsly.testcases.TC_LoginPageTest">
         <methods>
-          <include name="userLogin"/>
           <include name="setup"/>
           <include name="tearDown"/>
+          <include name="createParentTree"/>
+          <include name="invalidEmailIdLogin"/>
+          <include name="closeChildNode"/>
         </methods>
       </class> <!-- com.divsly.testcases.TC_LoginPageTest -->
     </classes>

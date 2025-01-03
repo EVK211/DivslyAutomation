@@ -3,6 +3,8 @@ package com.divsly.utilities;
 import java.io.FileInputStream;
 import java.util.Properties;
 
+import com.divsly.testcases.BaseClass;
+
 public class ReadConfig {
 
 	Properties properties;
@@ -56,7 +58,7 @@ public class ReadConfig {
 	public long getImplicitWaitTime() {
 		String waitTimeinSeconds = properties.getProperty("waitTimeinSeconds");
 		if (waitTimeinSeconds != null)
-			return Integer.parseInt(waitTimeinSeconds) * 1000;
+			return Integer.parseInt(waitTimeinSeconds);
 		else
 			return 10000;
 
@@ -86,6 +88,14 @@ public class ReadConfig {
 			return Integer.parseInt(longWaitinSeconds);
 		else
 			return 20;
+	}
+
+	public boolean getAttachScreenShotForPass() {
+		String attachScreenShotForPass = properties.getProperty("attachScreenShots");
+		if (attachScreenShotForPass != null && attachScreenShotForPass.equalsIgnoreCase("TRUE"))
+			return true;
+		else
+			return false;
 
 	}
 

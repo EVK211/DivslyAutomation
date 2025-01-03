@@ -39,26 +39,24 @@ public class SignInPage {
 	WebElement textAccountNotFound;
 
 	public void userLogin(String email, String password) {
-		inputUserEmail.clear();
-		inputUserEmail.sendKeys(email);
-		inputUserPassword.clear();
-		inputUserPassword.sendKeys(password);
-		buttonContinue.click();
+		enterEmailAddress(email);
+		enterPasswor(password);
+		clickSignin();
 	}
 
-//	public void enterEmailAddress(String email) {
-//		inputUserEmail.clear();
-//		inputUserEmail.sendKeys(email);
-//	}
-//
-//	public void enterPasswor(String password) {
-//		inputUserPassword.clear();
-//		inputUserPassword.sendKeys(password);
-//	}
-//
-//	public void clickSignin() {
-//		buttonContinue.click();
-//	}
+	public void enterEmailAddress(String email) {
+		inputUserEmail.clear();
+		inputUserEmail.sendKeys(email);
+	}
+
+	public void enterPasswor(String password) {
+		inputUserPassword.clear();
+		inputUserPassword.sendKeys(password);
+	}
+
+	public void clickSignin() {
+		buttonContinue.click();
+	}
 
 	public void clickSignup() {
 		linkSignUp.click();
@@ -76,5 +74,13 @@ public class SignInPage {
 	{
 		return textAccountNotFound.isDisplayed();
 	}
+	
+	
+	public boolean textInvalidEmailId()
+	{
+		return textenteraValidEmail.isDisplayed();
+	}
+	
+	
 
 }
